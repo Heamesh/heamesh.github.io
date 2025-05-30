@@ -1,0 +1,75 @@
+<!--  
+  GenSaveZ landing page  
+  Domain: https://gensavez.com  
+  Content sourced from Draft1 and Founder bio.  
+  Tailwind via CDN for quick prototyping; switch to self‑hosted for production.  
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GenSaveZ – Mr. Moolah: Your AI money buddy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="/favicon.ico" />
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Header -->
+  <header class="max-w-6xl mx-auto p-6 flex items-center justify-between">
+    <h1 class="text-2xl font-bold tracking-tight">GenSaveZ</h1>
+    <a href="#cta" class="px-5 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors">Join the Waitlist</a>
+  </header>
+
+  <!-- Hero -->
+  <main class="flex flex-col items-center text-center mt-24 px-4">
+    <h2 class="text-5xl sm:text-6xl font-extrabold leading-tight mb-6">Say hello to <span class="text-blue-600">Mr.&nbsp;Moolah&nbsp;$</span></h2>
+    <p class="text-lg sm:text-xl max-w-2xl">Have you ever wished for a money‑savvy buddy who can analyze your spending, find extra cash to save, and craft an investment strategy tailored to your long‑ and short‑term goals? <strong>GenSaveZ</strong> does exactly that—leveraging data, LLMs, and AI to become the lifelong financial advisor you can actually talk to.</p>
+    <!-- <a id="cta" href="mailto:hello@gensavez.com" class="mt-10 inline-block text-lg px-8 py-3 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors">Get early access</a> -->
+  </main>
+
+  <!-- Features -->
+  <section class="mt-32 bg-white py-16">
+    <div class="max-w-6xl mx-auto grid gap-10 sm:grid-cols-3 px-6">
+      <div class="p-6 rounded-xl shadow">
+        <h3 class="text-xl font-semibold mb-2">Spending Insights</h3>
+        <p>We crunch your transaction data to surface patterns, leaks, and opportunities so you can save more without feeling deprived.</p>
+      </div>
+      <div class="p-6 rounded-xl shadow">
+        <h3 class="text-xl font-semibold mb-2">Smart Saving Plans</h3>
+        <p>Automatic, goal‑based saving that adapts to your lifestyle and dynamically adjusts when life happens.</p>
+      </div>
+      <div class="p-6 rounded-xl shadow">
+        <h3 class="text-xl font-semibold mb-2">Personalized Investing</h3>
+        <p>Mr.&nbsp;Moolah evaluates multiple asset classes—stocks, mutual funds, bonds, and crypto—to build a portfolio tuned just for you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder -->
+  <section id="founder" class="py-16 bg-gray-100">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-6">Meet the Founder</h3>
+      <div class="bg-white shadow rounded-xl p-8">
+        <h4 class="text-2xl font-semibold">Dinesh Chowdary Nettem <span class="block text-sm font-normal text-gray-500">Founder &amp; CFO</span></h4>
+        <p class="mt-4 text-gray-700">A budding tech entrepreneur with a global mindset, Dinesh is on a mission to reshape personal finance by harnessing Data, Large‑scale Language Models, and AI. His vision: give Gen&nbsp;Z a one‑stop solution that makes saving and investing effortless.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-200 py-12">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+      <p>© <span id="year"></span> GenSaveZ • Built with ♥ in New Jersey.</p>
+      <div class="flex mt-4 sm:mt-0 space-x-4">
+        <a href="https://twitter.com/gensavez" aria-label="Twitter" class="hover:text-white">Twitter</a>
+        <a href="https://linkedin.com/company/gensavez" aria-label="LinkedIn" class="hover:text-white">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Auto‑update year -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
