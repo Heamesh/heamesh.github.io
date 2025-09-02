@@ -145,6 +145,22 @@
             <label for="waitlist-email" class="block mb-1 font-medium text-gray-700">Email</label>
             <input type="email" id="waitlist-email" name="email" class="w-full border border-gray-200 bg-gray-50 text-gray-900 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
           </div>
+          <!-- New: Statement upload and metadata -->
+          <div class="form-row">
+            <label for="stmtFile">Upload statement (PDF)</label>
+            <input id="stmtFile" name="file" type="file" accept="application/pdf" required />
+            <small>PDF only. Max 20–50MB (your server limit).</small>
+          </div>
+
+          <div class="form-row">
+            <label for="stmtPassword">Password (if any)</label>
+            <input id="stmtPassword" name="password" type="text" placeholder="Leave blank if none" />
+          </div>
+
+          <div class="form-row">
+            <label for="serviceProvider">Service provider (bank / credit card)</label>
+            <input id="serviceProvider" name="service_provider" type="text" placeholder="e.g., Chase, Zolve, Discover" required />
+          </div>
           <button type="submit" class="w-full bg-gradient-to-r from-blue-500 via-blue-600 to-teal-400 text-white font-semibold py-3 rounded-lg shadow-lg hover:from-blue-600 hover:to-teal-500 transition-all duration-200">Submit</button>
         </form>
       </div>
@@ -272,7 +288,5 @@
       });
     })();
     </script>
-
-
 </body>
 </html>
