@@ -199,5 +199,80 @@
       }
     });
   </script>
+  <script>
+    (function() {
+      const API_BASE = "http://54.167.227.250:8000"; // e.g., https://api.gensavez.com
+      const form = document.getElementById("waitlist-form");
+      if (!form) return;
+    
+      // Optional: lightweight UI helpers
+      const setBusy = (busy) => {
+        const btn = form.querySelector("button[type=submit]");
+        if (!btn) return;
+        btn.disabled = busy;
+        btn.dataset.originalText = btn.dataset.originalText || btn.textContent;
+        btn.textContent = busy ? "Submitting..." : btn.dataset.originalText;
+      };
+    
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+    
+        const emailEl = document.getElementById("waitlist-email"); // adjust if your email field has a different id/name
+        const fileEl = document.getElementById("stmtFile");
+        const pwdEl  = document.getElementById("stmtPassword");
+        const spEl   = document.getElementById("serviceProvider");
+    
+        if (!emailEl || !fileEl || !spEl) {
+          alert("Form is missing required fields. Please refresh and try again.");
+          return;
+        }
+        if (!fileEl.files || fileEl.files.length === 0) {
+          alert("Please choose a PDF file.");
+          return;
+        }
+        const file = fileEl.files[0];
+        if (file.type !== "application/pdf") {
+          alert("File must be a PDF.");
+          return;
+        }
+    
+        const fd = new FormData();
+        fd.append("email", emailEl.value.trim());
+        fd.append("password", (pwdEl.value || "").trim()); // empty string = no password (server treats as None)
+        fd.append("service_provider", spEl.value.trim());
+        fd.append("file", file);
+    
+        setBusy(true);
+        try {
+          const res = await fetch(`${API_BASE}/upload_pdf`, {
+            method: "POST",
+            body: fd
+          });
+    
+          const data = await res.json().catch(() => ({}));
+    
+          if (res.ok) {
+            // ✅ Success: you can show a toast, swap modal content, etc.
+            // Example:
+            alert("Thanks! Your statement was uploaded successfully.");
+            // Optionally close the modal or reset form:
+            form.reset();
+            // if you have a modal close function, call it here
+          } else {
+            // ❌ Error from server
+            const msg = data?.detail || data?.message || `Upload failed (HTTP ${res.status}).`;
+            alert(msg);
+          }
+        } catch (err) {
+          alert("Network error while uploading. Please try again.");
+          console.error(err);
+        } finally {
+          setBusy(false);
+        }
+      });
+    })();
+    </script>
+
+
 </body>
 </html>
